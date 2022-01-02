@@ -71,5 +71,6 @@ env.bak/
 venv.bak/
 
 # My
-bboard/s_key.py
+s_key.py
 bboard.data
+media/

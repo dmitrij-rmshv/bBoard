@@ -1,0 +1,18 @@
+{% extends "layout/basic.html" %}
+
+{% load bootstrap4 %}
+
+{% block title %}Bootstrap tests{% endblock %}
+
+{% block content %}
+<nav class="navbar fixed-bottom navbar-dark bg-primary">
+    <a class="navbar-brand" href="#!">Fixed bottom</a>
+</nav>
+
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+</div>
+{% endblock %}
