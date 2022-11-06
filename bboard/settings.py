@@ -81,9 +81,17 @@ WSGI_APPLICATION = 'bboard.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'bboard.data',
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'bboard.data',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'db_board',
+        'USER': 'bboard',
+        'PASSWORD': 'bboard',
+        'HOST': '192.168.1.55',
+        'PORT': '5432',
     }
 }
 
