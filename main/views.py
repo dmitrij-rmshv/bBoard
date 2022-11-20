@@ -122,7 +122,7 @@ class DeleteUserView(LoginRequiredMixin, DeleteView):
     def get_object(self, queryset=None):
         if not queryset:
             queryset = self.get_queryset()
-        return super().get_object_or_404(queryset, pk=self.user_id)
+        return get_object_or_404(queryset, pk=self.user_id)
 
 
 def by_rubric(request, pk):
@@ -160,13 +160,6 @@ def profile_bb_detail(request, pk):
     return render(request, 'main/owner_detail.html', context)
 
 
-# def fdetail(request, rubric_pk, pk):
-#     bb = get_object_or_404(Bb, pk=pk)
-#     ais = bb.additionalimage_set.all()
-#     context = {'bb': bb, 'ais': ais, 'fast': True}
-#     return render(request, 'main/detail.html', context)
-
-
 @login_required
 def  profile_bb_add(request):
     if request.method == 'POST':
@@ -183,3 +176,34 @@ def  profile_bb_add(request):
         formset = AIFormSet()
     context = {'form': form, 'formset': formset}
     return render(request, 'main/profile_bb_add.html', context)
+
+
+@login_required
+def profile_bb_change(request, pk):
+    bb = get_object_or_404(Bb, pk=pk)
+    if request.method == 'POST':
+        form = BbForm(request.POST, request.FILES, instance=bb)
+        if form.is_valid():
+            bb = form.save()
+            formset = AIFormSet(request.POST, request.FILES, instance=bb)
+            if formset.is_valid():
+                formset.save()
+                messages.add_message(request, messages.SUCCESS, 'Объявление исправлено')
+                return redirect('main:profile')
+    else:
+        form = BbForm(instance=bb)
+        formset = AIFormSet(instance=bb)
+    context = {'form': form, 'formset': formset}
+    return render(request, 'main/profile_bb_change.html', context)
+
+
+@login_required
+def profile_bb_delete(request, pk):
+    bb = get_object_or_404(Bb, pk=pk)
+    if request.method == 'POST':
+        bb.delete()
+        messages.add_message(request, messages.SUCCESS, 'Объявление удалено')
+        return redirect('main:profile')
+    else:
+        content = {'bb': bb}
+        return render(request, 'main/profile_bb_delete.html', context)

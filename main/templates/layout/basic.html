@@ -20,7 +20,7 @@
         <ul class="col nav justify-content-end border">
             {% if user.is_authenticated %}
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
-                    role="button" aria-haspopup="true" aria-expanded="true">Профиль</a>
+                    role="button" aria-haspopup="true" aria-expanded="true">{{ user.username }}</a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="{% url 'main:profile_bb_add' %}"><u>Добавить объявление</u></a>
                     <a class="dropdown-item" href="{% url 'main:profile' %}">Мои объявления</a>

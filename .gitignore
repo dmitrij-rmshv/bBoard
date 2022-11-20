@@ -75,3 +75,4 @@ venv.bak/
 s_key.py
 bboard.data
 media/
+*_data.json
