@@ -24,7 +24,6 @@
 </div>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-
-    {% buttons submit='Подтверить удаление' %}{% endbuttons %}
+    {% bootstrap_button "Подтверить удаление" button_type="submit" button_class="btn btn-danger" %}
 </form>
 {% endblock %}
