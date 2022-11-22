@@ -18,11 +18,11 @@
     </header>
     <div class="row">
         <ul class="col nav justify-content-end border">
-            <li class="nav-item"><a class="nav-link" href="{% url 'main:register' %}">Регистрация</a></li>
             {% if user.is_authenticated %}
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
-                    role="button" aria-haspopup="true" aria-expanded="true">Профиль</a>
+                    role="button" aria-haspopup="true" aria-expanded="true">Мой профиль (<b>{{ user.username }}</b>)</a>
                 <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="{% url 'main:profile_bb_add' %}"><u>Добавить объявление</u></a>
                     <a class="dropdown-item" href="{% url 'main:profile' %}">Мои объявления</a>
                     <a class="dropdown-item" href="{% url 'main:profile_change' %}"">Изменить личные данные</a>
                     <a class=" dropdown-item" href="{% url 'main:password_change' %}">Изменить пароль</a>
@@ -33,6 +33,7 @@
                 </div>
             </li>
             {% else %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'main:register' %}">Регистрация</a></li>
             <li class="nav-item"><a class="nav-link" href="{% url 'main:login' %}">Вход</a></li>
             {% endif %}
         </ul>

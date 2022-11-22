@@ -1,5 +1,6 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+.idea/
 *.py[cod]
 *$py.class
 
@@ -74,3 +75,4 @@ venv.bak/
 s_key.py
 bboard.data
 media/
+*_data.json
