@@ -1,6 +1,5 @@
 {% extends "layout/basic.html" %}
 
-
 {% block title %}{{ bb.title }} - {{ bb.rubric }}{% endblock %}
 
 {% block content %}
@@ -39,4 +38,7 @@
     Назад
     </a>
 </p>
+
+{% include 'main/includes/inc_comments.html' %}
+
 {% endblock %}
