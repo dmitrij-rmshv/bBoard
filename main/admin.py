@@ -89,3 +89,15 @@ class BbAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Bb, BbAdmin)
+
+
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('__str__', 'author', 'is_active',
+                    'content', 'created_at',)
+    search_fields = ('bb', 'author', 'content')
+    fields = ('bb', ('author', 'created_at'),
+              'content', 'is_active')
+    readonly_fields = ('created_at',)
+
+
+admin.site.register(Comment, CommentAdmin)
