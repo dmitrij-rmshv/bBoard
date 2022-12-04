@@ -8,7 +8,10 @@
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {% bootstrap_form form layout='horizontal' %}
-    {% bootstrap_formset formset layout='horizontal' %}
+    <div class="my-2 p-2 border">
+        <h5>Дополнительные изображения :</h5>
+        {% bootstrap_formset formset layout='horizontal' %}
+    </div>
     {% buttons submit='Добавить' %}{% endbuttons %}
 </form>
 {% endblock %}

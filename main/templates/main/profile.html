@@ -15,6 +15,7 @@
 {% endif %}
 {% if bbs %}
 <h3>Ваши объявления:</h3>
+<p><a href="{% url 'main:profile_bb_add' %}">Добавить объявление</a></p>
 <ul class="list-unstyled">
     {% for bb in bbs %}
     <li class="media my-5 p-3 border">
@@ -41,8 +42,7 @@
 <p><a href="{% url 'main:profile_bb_add' %}">Добавить объявление</a></p>
 </ul>
 {% else %}
-<h3>У вас пока нет объявлений :(</h3>
-<p><a href="{% url 'main:profile_bb_add' %}">Добавить объявление</a></p>
+<p><a href="{% url 'main:profile_bb_add' %}">Создать первое объявление</a></p>
 {% endif %}
 
 {% endblock %}
